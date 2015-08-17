@@ -28,7 +28,7 @@ exports.SumOfDiagonalCells = function(array2d){
 	if(array2d.length == array2d[0].length)
 	{
 		sum = 0;
-		for(var i=0;i<length; i++)
+		for(var i=0;i<array2d.length; i++)
 			sum += array2d[i][i];
 	}
 	return sum;
