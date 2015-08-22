@@ -9,7 +9,7 @@ exports.ParseNumber = function(str){
 
 exports.ConvertNumberToString = function(num){
 	var a = "";
-	if(num != null && isNAN(num) == false)
+	if(num != null && isNaN(num) == false)
 	{
 		a = num.toString();
 	}
@@ -39,32 +39,61 @@ exports.ConvertDateToString = function(dateValue){
 // numbers in the string.
 exports.ParseStringOfNumbers = function(str){
 	var numbers;
-	var numberArray;
-	if(str != null)
-		numbers =str.split(",");
-	if(numbers.length > 0)
-	{
-		numberArray = [];
-		for(var i=0; i<numbers.length; i++)
-		{
-			if(numbers[i]!=null)
-				numberArray.push(Number(numbers[i]));
-		}
-	}
-	return numberArray;
+    var numberArray = [];
+    if(str == null || str=="")
+        return numberArray;
+    else
+    {
+        numbers =str.split(",");
+            numberArray = [];
+            for(var i=0; i<numbers.length; i++)
+            {
+                if(numbers[i]!=null)
+                    numberArray.push(Number(numbers[i]));
+            }
+        return numberArray;
+    }
 }
 
 exports.ConvertArrayOfNumbersToString = function(obj){
-	
+	if(obj==null)
+		return null;
+	else
+	{
+		var string = "";
+		if(obj.length > 0)
+		{
+			for(var i =0; i<obj.length;i++)
+			{
+				num = obj[i];
+				if(num != null && isNAN(num) == false)
+					string += num.toString()+",";
+			}
+			string = string.substr(0,string.length-1);
+			return string;
+		}
+	}
 }
 
 
 exports.ConvertStringToObject = function(str){
-
+	var obj = null;
+	if(str="")
+		return obj;
+	else
+	{
+		obj = JSON.Parse(str);
+		return obj;
+	}
 }
 
 exports.ConvertObjectToString = function(obj){
-
+	if(obj == null !! obj == "")
+	{
+		return null;
+	}
+	else
+		return obj.toString();
 }
 
 
